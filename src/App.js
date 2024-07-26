@@ -4,17 +4,21 @@ import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React, { useState } from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 
 function App() {
   const [mode,setMode]=useState("light");
   const [alert,setAlert]=useState(null);
   const [theme,setTheme]=useState("primary");
+  const [myStyle,setStyle]=useState({
+    color: "black",
+    backgroundColor: "white"
+  });
 
   const toggleMode=()=>{
     if(mode==="light"){
@@ -28,7 +32,19 @@ function App() {
       showAlert("Switched to Light Mode","success");
       document.title="TextUtils- Light Mode";
     }
-  }
+
+    if(myStyle.color==="black"){
+      setStyle({
+          color:"white",
+          backgroundColor:"black"
+      });
+      }else{
+          setStyle({
+              color:"black",
+              backgroundColor:"white"
+          });
+      }
+    }
   
   const showAlert=(message,type)=>{
     setAlert({
@@ -57,18 +73,18 @@ function App() {
 
   return (
     <>
-    {/* <Router> */}
+    <Router>
       <Navbar title="TextUtils" aboutText="About TextUtils" toggleMode={toggleMode} mode={mode} changeTheme={changeTheme}/>
       <Alert alert={alert}/>
       <br/>
       <div className="container">
-        <TextForm mode={mode} showAlert={showAlert} theme={theme}/>
-        {/* <Routes>
-          <Route path="/about" element={<About/>}/>
+        {/* <TextForm mode={mode} showAlert={showAlert} theme={theme}/> */}
+        <Routes>
+          <Route path="/about" element={<About myStyle={myStyle}/>}/>
           <Route path="/" element={<TextForm mode={mode} showAlert={showAlert} theme={theme}/>}/>
-        </Routes> */}
+        </Routes>
       </div>
-    {/* </Router> */}
+    </Router>
     </>
   );
 }
