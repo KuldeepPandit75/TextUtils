@@ -37,6 +37,7 @@ export default function TextForm(props) {
         var text=document.getElementById("exampleFormControlTextarea1");
         text.select();
         navigator.clipboard.writeText(text.value);
+        document.getSelection().removeAllRanges();
         props.showAlert("Copied to Clipboard","success");
     }
     const handleClearClick = ()=>{
@@ -57,21 +58,21 @@ export default function TextForm(props) {
         <div className={`container text-${props.mode==="dark"?"light":"dark"}`}>
             <h2>Enter the text to analyze below</h2>
             <div className="mb-3">
-                <textarea className="form-control" value= {text} onChange={handleOnChange} style={{backgroundColor: props.mode==="dark"?"grey":"white",color: props.mode==="dark"?"white":"black"}} id="exampleFormControlTextarea1" rows="8"></textarea>
+                <textarea className="form-control" value= {text} onChange={handleOnChange} style={{backgroundColor: props.mode==="dark"?(props.theme==="primary"?"rgb(36,74,104)":props.theme==="success"?"#065306":"#6e6e07"):"white",color: props.mode==="dark"?"white":"black"}} id="exampleFormControlTextarea1" rows="8"></textarea>
             </div>
-            <button className={`btn btn-${props.theme} mx-2 my-2`} onClick={handleUpClick} >Convert to Uppercase</button>
-            <button className={`btn btn-${props.theme} mx-2 my-2`} onClick={handleLoClick} >Convert to Lowercase</button>
-            <button className={`btn btn-${props.theme} mx-2 my-2`} onClick={handleCaClick} >Convert to Capitalized Case</button>
-            <button className={`btn btn-${props.theme} mx-2 my-2`} onClick={handleReClick} >Remove Extra Spaces</button>
-            <button className={`btn btn-${props.theme} mx-2 my-2`} onClick={handleCoClick} >Copy to Clipboard</button>
+            <button disabled={removeEmptyStr(text.split(" ")).length===0} className={`btn btn-${props.theme} mx-2 my-2`} onClick={handleUpClick} >Convert to Uppercase</button>
+            <button disabled={removeEmptyStr(text.split(" ")).length===0} className={`btn btn-${props.theme} mx-2 my-2`} onClick={handleLoClick} >Convert to Lowercase</button>
+            <button disabled={removeEmptyStr(text.split(" ")).length===0} className={`btn btn-${props.theme} mx-2 my-2`} onClick={handleCaClick} >Convert to Capitalized Case</button>
+            <button disabled={removeEmptyStr(text.split(" ")).length===0} className={`btn btn-${props.theme} mx-2 my-2`} onClick={handleReClick} >Remove Extra Spaces</button>
+            <button disabled={removeEmptyStr(text.split(" ")).length===0} className={`btn btn-${props.theme} mx-2 my-2`} onClick={handleCoClick} >Copy to Clipboard</button>
             <button className={`btn btn-${props.theme} my-2`} onClick={handleClearClick} >Clear Text</button>
         </div>
         <div className={`container text-${props.mode==="dark"?"light":"dark"} my-3`}>
             <h2>Your Text Summary</h2>
             <p>{removeEmptyStr(text.split(" ")).length} words {text.length} characters</p>
-            <p>{0.008*text.split(" ").length} Minutes to read</p>
+            <p>{0.008*removeEmptyStr(text.split(" ")).length} Minutes to read</p>
             <h2>Preview</h2>
-            <p>{text.length>0?text:"Enter some text in above textbox to preview it here"}</p>
+            <p>{text.length>0?text:"Nothing to Preview!"}</p>
         </div>
         </>
     )

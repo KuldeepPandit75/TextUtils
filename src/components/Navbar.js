@@ -20,9 +20,9 @@ export default function Navbar(props) {
                 </li>
             </ul>
             <div className='theme' style={{display: props.mode==="dark"?"flex":"none"}}>
-              <div className='blue' onClick={props.changeTheme}></div>
-              <div className='yellow' onClick={props.changeTheme}></div>
-              <div className='green' onClick={props.changeTheme}></div>
+              <div className='bg-primary rounded mx-2' style={{height:"20px",width:"20px",cursor:"pointer"}} onClick={props.changeTheme}></div>
+              <div className='bg-warning rounded mx-2' style={{height:"20px",width:"20px",cursor:"pointer"}} onClick={props.changeTheme}></div>
+              <div className='bg-success rounded mx-2' style={{height:"20px",width:"20px",cursor:"pointer"}} onClick={props.changeTheme}></div>
             </div>
             <div className={`form-check form-switch text-${props.mode==="dark"?"light":"dark"}`}>
               <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>

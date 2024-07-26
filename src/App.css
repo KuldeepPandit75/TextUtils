@@ -28,44 +28,6 @@
   color: #61dafb;
 }
 
-.blue{
-  height: 15px;
-  width:15px;
-  background-color: blue;
-  margin: 4px;
-  border: 1px solid white;
-  border-radius: 2px;
-  transition: transform 0.2s ease-in 0s;
-}
-.yellow{
-  height: 15px;
-  width:15px;
-  background-color: yellow;
-  margin: 4px;
-  border: 1px solid white;
-  border-radius: 2px;
-  transition: transform 0.2s ease-in 0s;
-}
-.green{
-  height: 15px;
-  width:15px;
-  background-color: green;
-  margin: 4px;
-  border: 1px solid white;
-  border-radius: 2px;
-  transition: transform 0.2s ease-in 0s;
-}
-
-.blue:hover{
-  transform: scale(1.05);
-}
-.yellow:hover{
-  transform: scale(1.05);
-}
-.green:hover{
-  transform: scale(1.05);
-}
-
 .theme{
   display: flex;
   flex-direction: row;

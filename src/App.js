@@ -25,12 +25,12 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor="#042743";
       showAlert("Switched to Dark Mode","success");
-      document.title="TextUtils- Dark Mode";
+      // document.title="TextUtils- Dark Mode";
     }else{
       setMode("light");
       document.body.style.backgroundColor="white";
       showAlert("Switched to Light Mode","success");
-      document.title="TextUtils- Light Mode";
+      // document.title="TextUtils- Light Mode";
     }
 
     if(myStyle.color==="black"){
@@ -57,11 +57,11 @@ function App() {
   }
 
   const changeTheme=(e)=>{
-    if(e.target.className==="blue"){
+    if(e.target.className==="bg-primary rounded mx-2"){
       document.body.style.backgroundColor="#042743";
       setTheme("primary");
     }
-    else if(e.target.className==="green"){
+    else if(e.target.className==="bg-success rounded mx-2"){
       document.body.style.backgroundColor="rgb(0,40,0)";
       setTheme('success');
     }
@@ -80,7 +80,7 @@ function App() {
       <div className="container">
         {/* <TextForm mode={mode} showAlert={showAlert} theme={theme}/> */}
         <Routes>
-          <Route path="/about" element={<About myStyle={myStyle}/>}/>
+          <Route path="/about" element={<About mode={mode} theme={theme}/>}/>
           <Route path="/" element={<TextForm mode={mode} showAlert={showAlert} theme={theme}/>}/>
         </Routes>
       </div>
